@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Upload an image and let AI guess whether it is a cat or dog."
+    >
+
+    <title>Guess It Is Cat or Dog</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <div class="glow glow-purple"></div>
+        <div class="glow glow-cyan"></div>
+        <div class="glow glow-pink"></div>
+    </div>
+
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-icon">🐾</div>
+            <span>Guess It Is Cat or Dog</span>
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            AI Online
+        </div>
+
+    </header>
+
+
+    <!-- Main -->
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <div class="badge">
+                <span>✦</span>
+                AI Image Classifier
+            </div>
+
+            <h1>
+                Guess It Is
+                <span>Cat</span>
+                or
+                <span>Dog</span>
+            </h1>
+
+            <p>
+                Upload a single cat or dog image and let the AI guess.
+            </p>
+
+        </section>
+
+
+        <!-- Main AI Card -->
+        <section class="ai-card">
+
+            <!-- Upload Area -->
+            <div
+                class="upload-area"
+                id="uploadArea"
+            >
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/*"
+                    hidden
+                >
+
+                <div
+                    class="upload-content"
+                    id="uploadContent"
+                >
+
+                    <div class="upload-icon">
+                        📷
+                    </div>
+
+                    <h2>Upload an image</h2>
+
+                    <p>
+                        Drag & drop your image here
+                        or click to browse
+                    </p>
+
+                    <button
+                        class="upload-button"
+                        id="browseButton"
+                        type="button"
+                    >
+                        Choose Image
+                    </button>
+
+                    <small>
+                        JPG, JPEG, PNG or WEBP
+                    </small>
+
+                </div>
+
+
+                <!-- Image Preview -->
+                <div
+                    class="preview-container"
+                    id="previewContainer"
+                >
+
+                    <img
+                        id="previewImage"
+                        src=""
+                        alt="Selected image"
+                    >
+
+                    <button
+                        class="remove-image"
+                        id="removeImage"
+                        type="button"
+                        aria-label="Remove image"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- User Guess -->
+            <div class="guess-section">
+
+                <h3>What do you think?</h3>
+
+                <p>
+                    Make your guess before the AI reveals its answer.
+                </p>
+
+                <div class="guess-buttons">
+
+                    <button
+                        class="guess-button"
+                        data-guess="cat"
+                        type="button"
+                    >
+                        <span class="animal-icon">🐱</span>
+                        <span>Cat</span>
+                    </button>
+
+                    <button
+                        class="guess-button"
+                        data-guess="dog"
+                        type="button"
+                    >
+                        <span class="animal-icon">🐶</span>
+                        <span>Dog</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Predict Button -->
+            <button
+                class="predict-button"
+                id="predictButton"
+                type="button"
+                disabled
+            >
+
+                <span class="button-icon">🤖</span>
+
+                <span id="predictText">
+                    Let AI Guess
+                </span>
+
+            </button>
+
+
+            <!-- Loading -->
+            <div
+                class="loading"
+                id="loading"
+            >
+
+                <div class="loader"></div>
+
+                <h3>AI is thinking...</h3>
+
+                <p>
+                    Analyzing the image
+                </p>
+
+            </div>
+
+
+            <!-- Result -->
+            <div
+                class="result"
+                id="result"
+            >
+
+                <div class="result-label">
+                    AI Prediction
+                </div>
+
+                <div
+                    class="result-animal"
+                    id="resultAnimal"
+                >
+                    🐶
+                </div>
+
+                <h2 id="resultTitle">
+                    Dog
+                </h2>
+
+                <div class="confidence">
+
+                    <div class="confidence-header">
+                        <span>Confidence</span>
+
+                        <strong id="confidenceText">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="progress">
+                        <div
+                            class="progress-bar"
+                            id="progressBar"
+                        ></div>
+                    </div>
+
+                </div>
+
+
+                <!-- Game Result -->
+                <div
+                    class="game-result"
+                    id="gameResult"
+                >
+                    You were right!
+                </div>
+
+
+                <button
+                    class="try-again"
+                    id="tryAgain"
+                    type="button"
+                >
+                    ↻ Try Another Image
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- Information -->
+        <section class="info-section">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🧠
+                </div>
+
+                <h3>AI Powered</h3>
+
+                <p>
+                    Your image is analyzed by a trained
+                    machine learning model.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    ⚡
+                </div>
+
+                <h3>Fast Prediction</h3>
+
+                <p>
+                    Get the AI prediction and confidence
+                    score in seconds.
+                </p>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🎯
+                </div>
+
+                <h3>Challenge Yourself</h3>
+
+                <p>
+                    Make your own prediction and see
+                    if you can beat the AI.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            Cat vs Dog AI
+        </p>
+
+        <span>
+            Built with Python, PyTorch & Web
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
